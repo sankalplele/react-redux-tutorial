@@ -83,6 +83,8 @@ export const { addTodo, removeTodo } = todoSlice.actions;
 export default todoSlice.reducers;
 
 ```
+> [!IMPORTANT]
+> To create a slice using createSlice() we basically need three things inside the object namely, `name`, `reducers` and `initialState`. These names should be used as it is as they are predefined.
 
 And similarly here we have the updated `store.js` file.
 
