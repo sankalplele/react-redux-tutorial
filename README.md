@@ -22,6 +22,9 @@ To update data in store
 
 to get and dispatch data
 
+> [!TIP]
+> useDispatch uses a reducer to make changes in the store
+
 ## Installation
 
 ```
@@ -91,3 +94,46 @@ export const store = configureStore({
   reducer: todoReducer,
 });
 ```
+
+### useDispatch()
+
+Now we simply come to our AddTodo.jsx and there we do the usual coding like creating a form declaring input and setInput using useState. Thereafter, we import useDispatch and addTodo and in the submitHandler function we say `dispatch(addTodo(input))`. `dispatch` function is declared before and is coming from useDispatch as follows:
+
+```
+const dispatch = useDispatch();
+```
+
+### useSelector()
+
+We simply import it and write the following code to bring whatever data we want.
+
+```
+const todos = useSelector((state) => state.todos);
+```
+
+So, by now we have created both our AddTodo.jsx and Todos.jsx
+
+### Provider
+
+Yes, just like we have Provider in ContextAPI we are also required in redux to wrap our App.jsx or main.jsx with Provider which comes from 'react-redux'. It is done as shown in the code below:
+
+```
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "./index.css";
+import App from "./App.jsx";
+import { Provider } from "react-redux";
+import { store } from "./app/store.js";
+
+createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+```
+
+> [!CAUTION]
+>
+> ### Bug Encountered
+>
+> In my addTodo reducer definition I had written `action.payload.text` but in my AddTodo.jsx, from where I was dispatching data into it, I passed `input` as a parameter which is a string. `action.payload` contains whatever is passed as the argument so `action.payload.text` is **undefined**.

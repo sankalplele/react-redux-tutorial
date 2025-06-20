@@ -11,8 +11,9 @@ export const todoSlice = createSlice({
     addTodo: (state, action) => {
       const todo = {
         id: nanoid(),
-        text: action.payload.text,
+        text: action.payload,
       };
+      console.log(action.payload);
       state.todos.push(todo);
     },
     removeTodo: (state, action) => {
@@ -27,4 +28,4 @@ export const todoSlice = createSlice({
 export const { addTodo, removeTodo } = todoSlice.actions;
 
 // to tell the store that we have these reducers we need to export these reducers
-export default todoSlice.reducers;
+export default todoSlice.reducer;
