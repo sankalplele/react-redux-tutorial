@@ -113,6 +113,9 @@ We simply import it and write the following code to bring whatever data we want.
 const todos = useSelector((state) => state.todos);
 ```
 
+> [!IMPORTANT]
+> When we have more than one slice like authslice and themeslice when we call use selector we must write, **` useSelector((state) => state.theme.themeMode)`** so that redux knwos from where it is coming.
+
 So, by now we have created both our AddTodo.jsx and Todos.jsx
 
 ### Provider
